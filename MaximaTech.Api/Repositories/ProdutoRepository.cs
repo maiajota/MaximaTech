@@ -18,10 +18,10 @@ public class ProdutoRepository(IDbConnection db) : IProdutoRepository
                     descricao,
                     preco,
                     status,
-                    departamento_codigo,
-                    data_criacao,
-                    data_atualizacao,
-                    data_exclusao
+                    departamento_codigo AS DepartamentoCodigo,
+                    data_criacao AS DataCriacao,
+                    data_atualizacao AS DataAtualizacao,
+                    data_exclusao AS DataExclusao
             FROM produtos
             ORDER BY id;
         """;
@@ -37,10 +37,10 @@ public class ProdutoRepository(IDbConnection db) : IProdutoRepository
                     descricao,
                     preco,
                     status,
-                    departamento_codigo,
-                    data_criacao,
-                    data_atualizacao,
-                    data_exclusao
+                    departamento_codigo AS DepartamentoCodigo,
+                    data_criacao AS DataCriacao,
+                    data_atualizacao AS DataAtualizacao,
+                    data_exclusao AS DataExclusao
             FROM produtos
             WHERE id = @id
         """;
@@ -53,8 +53,8 @@ public class ProdutoRepository(IDbConnection db) : IProdutoRepository
         var id = Guid.NewGuid();
 
         var sql = """
-            INSERT INTO produtos(id, codigo, descricao, preco, status)
-                VALUES(@id, @Codigo, @Descricao, @Preco, @Status)
+            INSERT INTO produtos(id, codigo, descricao, preco, status, departamento_codigo)
+                VALUES(@id, @Codigo, @Descricao, @Preco, @Status, @DepartamentoCodigo)
         """;
 
         await _db.ExecuteAsync(sql, new
@@ -63,7 +63,8 @@ public class ProdutoRepository(IDbConnection db) : IProdutoRepository
             produto.Codigo,
             produto.Descricao,
             produto.Preco,
-            produto.Status
+            produto.Status,
+            produto.DepartamentoCodigo
         });
 
         return id;
