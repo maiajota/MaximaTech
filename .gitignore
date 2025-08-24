@@ -1,0 +1,26 @@
+# Visual Studio / .NET
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+*.swp
+*.log
+*.db
+.vscode/
+
+# Certificados de dev (não versionar)
+*.pfx
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema
+Thumbs.db
+Desktop.ini

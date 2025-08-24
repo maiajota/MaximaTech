@@ -1,0 +1,6 @@
+@MaximaTech.Api_HostAddress = http://localhost:5042
+
+GET {{MaximaTech.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

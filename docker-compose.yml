@@ -1,0 +1,14 @@
+services:
+  api:
+    build:
+      context: ./MaximaTech.Api
+      dockerfile: Dockerfile
+    ports:
+      - "5042:5042"
+
+  web:
+    build:
+      context: ./MaximaTech.Web
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
