@@ -28,7 +28,7 @@
                 <td>{{ produto.status ? 'Ativo' : 'Inativo' }}</td>
                 <td>{{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
                 <td>{{ produto.departamentoCodigo }}</td>
-                <td class="uk-text-center">
+                <td class="uk-text-center@m">
                     <a class="uk-text-primary uk-margin-right" uk-icon="icon: eye" uk-tooltip="Visualizar" (click)="visualizarProduto(produto)"></a>
                     <a class="uk-text-warning uk-margin-right" [routerLink]="['/produtos', produto.id]" uk-icon="icon: pencil" uk-tooltip="Editar"></a>
                     <a class="uk-text-danger" (click)="deleteProduto(produto.id)" uk-icon="icon: trash" uk-tooltip="Excluir"></a>
