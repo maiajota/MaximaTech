@@ -17,7 +17,7 @@ public class ProdutoController(IProdutoRepository produtoRepository) : Controlle
     {
         var produtos = await _produtoRepository.GetProdutosAsync();
 
-        return Ok(produtos);
+        return produtos != null ? Ok(produtos) : NotFound();
     }
 
     [HttpGet("{id:guid}", Name = "GetProdutoById")]
@@ -29,8 +29,8 @@ public class ProdutoController(IProdutoRepository produtoRepository) : Controlle
     }
 
     [HttpPost]
-    [Consumes("application/x-www-form-urlencoded")]
-    public async Task<ActionResult> PostProdutoAsync([FromForm] ProdutoCadastroDto produto)
+    [Consumes("application/json")]
+    public async Task<ActionResult> PostProdutoAsync([FromBody] ProdutoCadastroDto produto)
     {
         if (!ModelState.IsValid)
             return ValidationProblem(ModelState);
@@ -49,7 +49,7 @@ public class ProdutoController(IProdutoRepository produtoRepository) : Controlle
     }
     
     [HttpPut("{id:guid}")]
-    public async Task<ActionResult> UpdateProdutoByIdAsync(Guid id, [FromForm] ProdutoUpdateDto produto)
+    public async Task<ActionResult> UpdateProdutoByIdAsync(Guid id, [FromBody] ProdutoUpdateDto produto)
     {
         var isSucesso = await _produtoRepository.UpdateProdutoByIdAsync(id, produto);
 

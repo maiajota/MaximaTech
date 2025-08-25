@@ -5,3 +5,17 @@
 .uk-button-primary:hover {
     background-color: #1a285aee;
 }
+
+.uk-button-primary:disabled {
+    background-color: #1a285aee;
+    cursor: not-allowed;
+}
+
+a[uk-icon]:hover {
+    color: inherit;
+}
+
+.uk-navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #c2c2c2;
+}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Timestamp } from 'rxjs';
 
 export interface Produto {
   id?: string;
@@ -9,6 +9,9 @@ export interface Produto {
   preco: number;
   status: boolean;
   departamentoCodigo: string;
+  dataCriacao: string,
+  dataAtualizacao: string,
+  dataExclusao?: string;
 }
 
 @Injectable({ providedIn: 'root' })

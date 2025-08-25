@@ -1,8 +1,9 @@
 <div class="uk-grid-collapse uk-flex-between" uk-grid>
-    <h2>Produtos</h2>
-    <p>
-        <button class="uk-button uk-button-primary">CADASTRAR</button>
-    </p>
+    <h2>
+        <a href="/" uk-icon="icon: arrow-left; ratio: 2"></a>
+        Produtos
+    </h2>
+    <p><a href="/produtos/cadastrar" class="uk-button uk-button-primary">CADASTRAR</a></p>
 </div>
 <hr />
 
@@ -10,23 +11,27 @@
 
 <div class="uk-overflow-auto">
     <table *ngIf="!loading && produtos.length > 0" class="uk-table uk-table-striped">
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Descrição</th>
-          <th>Status</th>
-          <th>Preço</th>
-          <th>Departamento</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let p of produtos">
-          <td>{{ p.codigo }}</td>
-          <td>{{ p.descricao }}</td>
-          <td>{{ p.status ? 'Ativo' : 'Inativo' }}</td>
-          <td>{{ p.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
-          <td>{{ p.departamentoCodigo }}</td>
-        </tr>
-      </tbody>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Status</th>
+                <th>Preço</th>
+                <th>Departamento</th>
+                <th class="uk-text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of produtos">
+                <td>{{ p.codigo }}</td>
+                <td class="uk-text-truncate">{{ p.descricao }}</td>
+                <td>{{ p.status ? 'Ativo' : 'Inativo' }}</td>
+                <td>{{ p.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
+                <td>{{ p.departamentoCodigo }}</td>
+                <td class="uk-text-center">
+                    <a class="uk-text-danger" (click)="deleteProduto(p.id)"  type="button" uk-icon="icon: trash"></a>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
