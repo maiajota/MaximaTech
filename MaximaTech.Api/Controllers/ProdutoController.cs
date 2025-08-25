@@ -1,4 +1,3 @@
-using System.Data;
 using MaximaTech.Api.Models;
 using MaximaTech.Api.Models.Dto;
 using MaximaTech.Api.Repositories.Interfaces;

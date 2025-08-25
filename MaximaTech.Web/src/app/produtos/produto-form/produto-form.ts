@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProdutoService } from '../../../services/produto.service';
+import { Departamento, DepartamentoService } from '../../../services/departamento.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -16,10 +17,12 @@ declare const UIkit: any;
 export class ProdutoForm implements OnInit {
     produtoForm: FormGroup;
     id: string = "";
+    departamentos: Departamento[] = [];
 
     constructor(
         private fb: FormBuilder,
         private produtoService: ProdutoService,
+        private departamentoService: DepartamentoService,
         private router: Router,
         private route: ActivatedRoute
     ) {
@@ -29,6 +32,16 @@ export class ProdutoForm implements OnInit {
             preco: [0, [Validators.required, Validators.min(0.01)]],
             status: [null, Validators.required],
             departamentoCodigo: ['', Validators.required]
+        });
+
+        this.departamentoService.getDepartamentos().subscribe({
+            next: (dados) => this.departamentos = dados,
+            error: () => UIkit.notification({
+                message: 'Erro ao carregar os departamentos',
+                status: 'danger',
+                pos: 'bottom-center',
+                timeout: 4000
+            })
         });
 
         this.id = this.route.snapshot.paramMap.get('id') ?? "";
