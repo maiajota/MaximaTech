@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto, ProdutoService } from '../../../services/produto.service';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 declare const UIkit: any;
@@ -7,12 +8,13 @@ declare const UIkit: any;
 @Component({
 	selector: 'app-produto-lista',
 	standalone: true,
-	imports: [CommonModule],  
+	imports: [CommonModule, RouterModule],  
 	templateUrl: './produto-lista.html',
 	styleUrl: './produto-lista.css'
 })
 export class ProdutoLista implements OnInit {
 	produtos: Produto[] = [];
+	produtoSelecionado?: Produto;
 	loading = true;
 
 	constructor(private produtoService: ProdutoService) { }
@@ -58,5 +60,11 @@ export class ProdutoLista implements OnInit {
                 });
 			}
 		});
+	}
+
+	visualizarProduto(produto: Produto): void {
+		this.produtoSelecionado = produto;
+
+		UIkit.modal('#modal-visualizacao').show();
 	}
 }

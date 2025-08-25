@@ -1,7 +1,7 @@
 <div class="uk-grid-collapse uk-flex-between" uk-grid>
     <h2>
         <a href="/" uk-icon="icon: arrow-left; ratio: 2"></a>
-        Produtos
+        <span>Produtos</span>
     </h2>
     <p><a href="/produtos/cadastrar" class="uk-button uk-button-primary">CADASTRAR</a></p>
 </div>
@@ -22,16 +22,60 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of produtos">
-                <td>{{ p.codigo }}</td>
-                <td class="uk-text-truncate">{{ p.descricao }}</td>
-                <td>{{ p.status ? 'Ativo' : 'Inativo' }}</td>
-                <td>{{ p.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
-                <td>{{ p.departamentoCodigo }}</td>
+            <tr *ngFor="let produto of produtos">
+                <td>{{ produto.codigo }}</td>
+                <td class="uk-text-truncate">{{ produto.descricao }}</td>
+                <td>{{ produto.status ? 'Ativo' : 'Inativo' }}</td>
+                <td>{{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
+                <td>{{ produto.departamentoCodigo }}</td>
                 <td class="uk-text-center">
-                    <a class="uk-text-danger" (click)="deleteProduto(p.id)"  type="button" uk-icon="icon: trash"></a>
+                    <a class="uk-text-primary uk-margin-right" uk-icon="icon: eye" uk-tooltip="Visualizar" (click)="visualizarProduto(produto)"></a>
+                    <a class="uk-text-warning uk-margin-right" [routerLink]="['/produtos', produto.id]" uk-icon="icon: pencil" uk-tooltip="Editar"></a>
+                    <a class="uk-text-danger" (click)="deleteProduto(produto.id)" uk-icon="icon: trash" uk-tooltip="Excluir"></a>
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
+
+<div id="modal-visualizacao" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">Informações do Produto</h2>
+        <hr />
+        <div *ngIf="produtoSelecionado"> 
+            <p>
+                <strong>Id:</strong>
+                <span>{{ produtoSelecionado.id }}</span>
+            </p>
+            <p>
+                <strong>Código:</strong>
+                <span>{{ produtoSelecionado.codigo }}</span>
+            </p>
+            <p>
+                <strong>Descrição:</strong>
+                <span class="uk-text-break">{{ produtoSelecionado.descricao }}</span>
+            </p>
+            <p>
+                <strong>Preço:</strong>
+                <span>{{ produtoSelecionado.preco }}</span>
+            </p>
+            <p>
+                <strong>Status:</strong>
+                <span>{{ produtoSelecionado.status ? 'Ativo' : 'Inativo' }}</span>
+            </p>
+            <p>
+                <strong>Código do Departamento:</strong>
+                <span>{{ produtoSelecionado.departamentoCodigo }}</span>
+            </p>
+            <p>
+                <strong>Data da Criação:</strong>
+                <span>{{ produtoSelecionado.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</span>
+            </p>
+            <p>
+                <strong>Data da Última Atualização:</strong>
+                <span>{{ produtoSelecionado.dataAtualizacao | date:'dd/MM/yyyy HH:mm' }}</span>
+            </p>
+        </div>
+    </div>
 </div>

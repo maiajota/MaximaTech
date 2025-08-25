@@ -1,10 +1,10 @@
 <h2>
     <a href="/produtos" uk-icon="icon: arrow-left; ratio: 2"></a>
-    Cadastrar Produto
+    <span>Cadastrar Produto</span>
 </h2>
 <hr />
 
-<form [formGroup]="produtoForm" (ngSubmit)="post()" class="uk-form-stacked uk-grid-small" uk-grid>
+<form [formGroup]="produtoForm" (ngSubmit)="id ? atualizar() : post()" class="uk-form-stacked uk-grid-small" uk-grid>
     <div class="uk-width-1-6">
         <label class="uk-form-label">Código</label>
         <div class="uk-form-controls">

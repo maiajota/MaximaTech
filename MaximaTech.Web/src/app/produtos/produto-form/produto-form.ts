@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProdutoService } from '../../../services/produto.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 declare const UIkit: any;
@@ -13,13 +13,15 @@ declare const UIkit: any;
     templateUrl: './produto-form.html',
     styleUrl: './produto-form.css'
 })
-export class ProdutoForm {
+export class ProdutoForm implements OnInit {
     produtoForm: FormGroup;
+    id: string = "";
 
     constructor(
         private fb: FormBuilder,
         private produtoService: ProdutoService,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute
     ) {
         this.produtoForm = this.fb.group({
             codigo: ['', Validators.required],
@@ -28,6 +30,18 @@ export class ProdutoForm {
             status: [null, Validators.required],
             departamentoCodigo: ['', Validators.required]
         });
+
+        this.id = this.route.snapshot.paramMap.get('id') ?? "";
+    }
+
+    ngOnInit(): void {
+        if (this.id) {
+            this.produtoService.getProdutoById(this.id).subscribe({
+                next: (produto) => {
+                    this.produtoForm.patchValue(produto);
+                }
+            })
+        }
     }
 
     post(): void {
@@ -53,5 +67,30 @@ export class ProdutoForm {
                 });
             }
         });
+    }
+
+    atualizar(): void {
+        if (this.produtoForm.invalid || this.id == "")
+            return;
+
+        this.produtoService.updateProdutoById(this.id, this.produtoForm.value).subscribe({
+            next: () => {
+                UIkit.notification({
+                    message: 'Produto atualizado com sucesso!',
+                    status: 'success',
+                    pos: 'bottom-center',
+                    timeout: 3000
+                });
+                this.router.navigate(['/produtos']);
+            },
+            error: () => {
+                UIkit.notification({
+                    message: 'Erro ao atualizar produto',
+                    status: 'danger',
+                    pos: 'bottom-center',
+                    timeout: 4000
+                });
+            }
+        })
     }
 }
