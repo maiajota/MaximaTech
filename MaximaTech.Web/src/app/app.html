@@ -1,4 +1,4 @@
-<nav class="uk-navbar-container">
+<nav class="uk-navbar-container" *ngIf="isLogado()">
     <div>
         <div uk-navbar>
             <div class="uk-navbar-left">
@@ -14,10 +14,26 @@
                     </li>
                 </ul>
             </div>
+            <div class="uk-navbar-right uk-margin-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <span uk-icon="icon: user; ratio: 1.2"></span>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav uk-grid-small" uk-grid>
+                                <a class="uk-link-text" (click)="logout()">
+                                    <span uk-icon="icon: sign-out; ratio: 1.2"></span>
+                                    Sair
+                                </a>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
         </div>
     </div>
 </nav>
 
 <div class="uk-container uk-margin-top">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>
