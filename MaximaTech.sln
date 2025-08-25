@@ -1,8 +1,10 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaximaTech.Api", "MaximaTech.Api\MaximaTech.Api.csproj", "{DB719BB8-E375-3A55-578E-F7E5CE54949B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaximaTech.Tests", "MaximaTech.Tests\MaximaTech.Tests.csproj", "{AFE064BD-7A15-407F-B876-616C5EA98AC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +16,10 @@ Global
 		{DB719BB8-E375-3A55-578E-F7E5CE54949B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB719BB8-E375-3A55-578E-F7E5CE54949B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB719BB8-E375-3A55-578E-F7E5CE54949B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE064BD-7A15-407F-B876-616C5EA98AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE064BD-7A15-407F-B876-616C5EA98AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE064BD-7A15-407F-B876-616C5EA98AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE064BD-7A15-407F-B876-616C5EA98AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
