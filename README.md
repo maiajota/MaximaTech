@@ -67,3 +67,10 @@ Para rodar os testes da aplicação, rode o comando
 ```bash
 dotnet test
 ```
+
+## Explicação do Projeto
+- [Assista ao vídeo do projeto](https://youtu.be/2QuoeRns4fc)
+
+<img width="1215" height="325" alt="Screenshot_1" src="https://github.com/user-attachments/assets/38b6a5e1-3e43-43e0-8f8b-77198c44312c" />
+Fluxo: O usuário envia uma requisição HTTP da Web para a API. A API recebe esse request e o processa enviando para o banco. O banco então devolve o resultado para a API que retorna um JSON para a Web.
+
