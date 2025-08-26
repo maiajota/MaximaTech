@@ -3,33 +3,67 @@
 Projeto de um CRUD de produtos que fará parte do módulo de administração de um e-commerce.
 
 ## Stack utilizada
-- .NET 8
-- Angular 20
-- PostgreSQL
-- xUnit
 
-## Pré-requisitos
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+![.NET](https://img.shields.io/badge/.NET-8.0-blue?logo=dotnet&logoColor=white)
 
-## Passo a passo para rodar
-> Obs.: Necessário estar com serviço Docker aberto
+![Angular](https://img.shields.io/badge/Angular-20-red?logo=angular&logoColor=white)
+
+![PostgreSQL](https://img.shields.io/badge/Postgres-17-blue?logo=postgresql&logoColor=white)
+
+![Tests](https://img.shields.io/badge/tests-xUnit-green?logo=githubactions&logoColor=white)
+
+## Passo a passo para rodar localmente
 1. Clone o repositório
 ```bash
 git clone https://github.com/maiajota/MaximaTech && cd MaximaTech
 ```
-2. Suba os containers
-```bash
-docker compose build
-```
-3. Rode os containers
-```bash
-docker compose up -d
-```
-4. Acesse os serviços
-- **API (.NET)**: [http://localhost:5042](http://localhost:5042)
-- **Web (Angular)**: [http://localhost:4200](http://localhost:4200)
 
-5. Para parar os containers
+2. Abra um terminal e rode
 ```bash
-docker compose down
+cd MaximaTech.Api && dotnet run --launch-profile https
+```
+
+3. Abra outro terminal e rode
+```bash
+cd MaximaTech.Web && ng serve --ssl
+```
+
+4. Acesse os serviços
+- **API (.NET)**: [http://localhost:5042](https://localhost:5042)
+- **Web (Angular)**: [http://localhost:4200](https://localhost:4200)
+
+## Banco de dados
+Querie necessária para rodar o banco
+
+```sql
+CREATE DATABASE maxima_tech;
+```
+
+```sql
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS produtos (
+    id UUID PRIMARY KEY DEFAULT UUID_GENERATE_V4(),
+    codigo VARCHAR(20) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    preco NUMERIC(10, 2) NOT NULL,
+    status BOOLEAN NOT NULL,
+    departamento_codigo VARCHAR(3),
+    data_criacao TIMESTAMP NOT NULL DEFAULT NOW(),
+    data_atualizacao TIMESTAMP NOT NULL DEFAULT NOW(),
+    data_exclusao TIMESTAMP
+);
+```
+
+- O login do PostgreSQL utilizado foi:
+```bash
+Username=postgres;Password=123;
+```
+Caso necessário, deve ser alterado em:
+MaximaTech\MaximaTech.Api\appsettings.json
+
+## Testes
+Para rodar os testes da aplicação, rode o comando
+```bash
+dotnet test
 ```
