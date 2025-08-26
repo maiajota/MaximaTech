@@ -59,7 +59,7 @@ cd MaximaTech.Web && ng serve --ssl
 ```
 
 4. Acesse os serviços
-- **API (.NET)**: [https://localhost:5042](https://localhost:5042)
+- **Swagger (.NET)**: [https://localhost:7113/swagger/index.html](https://localhost:7113/swagger/index.html)
 - **Web (Angular)**: [https://localhost:4200](https://localhost:4200)
 
 ## Testes
