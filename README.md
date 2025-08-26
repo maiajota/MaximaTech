@@ -12,28 +12,8 @@ Projeto de um CRUD de produtos que fará parte do módulo de administração de 
 
 ![Tests](https://img.shields.io/badge/tests-xUnit-green?logo=githubactions&logoColor=white)
 
-## Passo a passo para rodar localmente
-1. Clone o repositório
-```bash
-git clone https://github.com/maiajota/MaximaTech && cd MaximaTech
-```
-
-2. Abra um terminal e rode
-```bash
-cd MaximaTech.Api && dotnet run --launch-profile https
-```
-
-3. Abra outro terminal e rode
-```bash
-cd MaximaTech.Web && ng serve --ssl
-```
-
-4. Acesse os serviços
-- **API (.NET)**: [http://localhost:5042](https://localhost:5042)
-- **Web (Angular)**: [http://localhost:4200](https://localhost:4200)
-
 ## Banco de dados
-Querie necessária para rodar o banco
+Query necessária para rodar o banco
 
 ```sql
 CREATE DATABASE maxima_tech;
@@ -61,6 +41,26 @@ Username=postgres;Password=123;
 ```
 Caso necessário, deve ser alterado em:
 MaximaTech\MaximaTech.Api\appsettings.json
+
+## Passo a passo para rodar localmente
+1. Clone o repositório
+```bash
+git clone https://github.com/maiajota/MaximaTech && cd MaximaTech
+```
+
+2. Abra um terminal e rode
+```bash
+cd MaximaTech.Api && dotnet run --launch-profile https
+```
+
+3. Abra outro terminal e rode
+```bash
+cd MaximaTech.Web && ng serve --ssl
+```
+
+4. Acesse os serviços
+- **API (.NET)**: [http://localhost:5042](https://localhost:5042)
+- **Web (Angular)**: [http://localhost:4200](https://localhost:4200)
 
 ## Testes
 Para rodar os testes da aplicação, rode o comando
