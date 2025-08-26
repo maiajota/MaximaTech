@@ -59,8 +59,8 @@ cd MaximaTech.Web && ng serve --ssl
 ```
 
 4. Acesse os serviços
-- **API (.NET)**: [http://localhost:5042](https://localhost:5042)
-- **Web (Angular)**: [http://localhost:4200](https://localhost:4200)
+- **API (.NET)**: [https://localhost:5042](https://localhost:5042)
+- **Web (Angular)**: [https://localhost:4200](https://localhost:4200)
 
 ## Testes
 Para rodar os testes da aplicação, rode o comando
