@@ -55,7 +55,10 @@ cd MaximaTech.Api && dotnet run --launch-profile https
 
 3. Abra outro terminal e rode
 ```bash
-cd MaximaTech.Web && ng serve --ssl
+cd MaximaTech.Web && npm install
+```
+```bash
+ng serve --ssl
 ```
 
 4. Acesse os serviços
