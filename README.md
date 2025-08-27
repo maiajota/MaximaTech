@@ -50,7 +50,7 @@ git clone https://github.com/maiajota/MaximaTech && cd MaximaTech
 
 2. Abra um terminal e rode
 ```bash
-cd MaximaTech.Api && dotnet run --launch-profile https
+cd MaximaTech.Api && dotnet dev-certs https --trust && dotnet run --launch-profile https
 ```
 
 3. Abra outro terminal e rode
